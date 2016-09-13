@@ -1,0 +1,98 @@
+.about-view
+	+raleway
+
+	color: $text
+
+header.me
+	@extend .flex-xy
+
+	flex-direction: column
+	height: calc(100vh - 60px)
+	background-size: cover
+	background-position-x: center
+	background-position-y: center
+	background-repeat-x: no-repeat
+	background-repeat-y: no-repeat
+	position: relative
+
+	+media-sm-up
+		height: 70vh
+
+
+	.text
+		font-weight: 700
+		color: white
+		padding-top: 200px
+		text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4)
+		font-size: 50px
+		letter-spacing: 2px
+
+		+media-sm-up
+			letter-spacing: 4px
+			padding: 0
+			position: absolute
+			bottom: 60px
+			font-weight: 800
+			font-size: 60px
+
+
+		span
+			color: #f1ba28
+
+	.show-sm-up
+		display: none
+		width: 100%
+		border-top: 1px solid white
+		margin: 15px 0
+
+		+media-sm-up
+			display: block
+
+section.about-content
+	padding: 30px 0
+
+	+media-sm-up
+		padding: 60px 0
+
+article.section:not(:first-child)
+	margin-top: 30px
+
+	+media-sm-up
+		margin-top: 60px
+
+.section-heading
+	padding: 0 15px
+	color: #3a434a
+	font-weight: 700
+	letter-spacing: 2px
+	margin-bottom: 30px
+
+	span
+		border-bottom: 3px solid #f1ba28
+		font-size: 46px
+
+	+media-sm-up
+		padding: 0 19%
+
+.section-subheading
+	padding: 0 15px
+	color: #3a434a
+	font-weight: 700
+	margin: 0
+
+	+media-sm-up
+		padding: 0 19%
+
+.section-text
+	+serif
+
+	font-size: 18px
+	padding: 10px 15px 30px 15px
+	line-height: 1.4
+
+	+media-sm-up
+		padding: 10px 19% 20px 19%
+
+
+	span
+		color: #f1ba28

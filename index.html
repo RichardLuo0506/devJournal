@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Richard Luo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <!-- Angular Datepicker -->
+    <link rel="stylesheet" href="node_modules/angularjs-datepicker/dist/angular-datepicker.min.css">
+    <!-- ng-tags-input -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ng-tags-input/3.1.1/ng-tags-input.min.css">
+    <link rel="stylesheet" href="app/shared/app.css">
+    <!-- favicon -->
+    <!-- <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" /> -->
+</head>
+
+<body ng-app="APP" ng-controller="Core as core">
+    <div class="mobile-nav">
+        <div class="links-container" ng-show="core.sidebarShown">
+            <div class="mobile-brand"><a ui-sref="auth.login" ng-if="!user" class="secret-login">o</a><a ng-if="user" class="secret-login" ng-click="core.logout()">o</a></div>
+            <a class="mobile-link" ui-sref="about" ui-sref-active="active" ng-click="core.closeSidebar()">
+                <i class="ionicons ion-information-circled"></i>
+                <div class="label">About</div>
+            </a>
+            <a class="mobile-link" ui-sref="blog.index" ng-class="{'active': core.isActive('blog')}" ng-click="core.closeSidebar()">
+                <i class="ionicons ion-ios-paper"></i>
+                <div class="label">Blog</div>
+            </a>
+            <a class="mobile-link" ui-sref="lab.index" ui-sref-active="active" ng-click="core.closeSidebar()">
+                <i class="ionicons ion-erlenmeyer-flask"></i>
+                <div class="label">Lab</div>
+            </a>
+            <!--             <a class="mobile-link" ui-sref="contact" ui-sref-active="active" ng-click="core.closeSidebar()">
+                <i class="ionicons ion-android-call"></i>
+                <div class="label">Contact</div>
+            </a> -->
+        </div>
+        <div class="mobile-overlay" ng-show="core.sidebarShown" ng-click="core.closeSidebar()"></div>
+    </div>
+    <nav class="navbar">
+        <div class="brand">Richard Lu<a ui-sref="auth.login" ng-if="!user" class="secret-login">o</a><a ng-if="user" class="secret-login" ng-click="core.logout()">o</a></div>
+        <div class="nav-links">
+            <a class="nav-link" ui-sref="about" ui-sref-active="active"><span>About</span></a>
+            <a class="nav-link" ui-sref="blog.index" ng-class="{'active': core.isActive('blog')}" "><span>Blog</span></a>
+            <a class="nav-link " ui-sref="lab.index " ui-sref-active="active "><span>Lab</span></a>
+            <!-- <a class="nav-link " ui-sref="contact " ui-sref-active="active "><span>Contact</span></a> -->
+        </div>
+        <div class="nav-offset "></div>
+        <div class="nav-toggle " ng-click="core.openSidebar() "><i class="ionicons ion-navicon "></i></div>
+    </nav>
+    <div ui-view ng-cloak></div>
+    <div class="view-curtain " ng-hide="core.showView "></div>
+
+    <!-- Dependencies -->
+    <!-- jQuery -->
+    <script src="node_modules/jquery/dist/jquery.min.js "></script>
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js "></script>
+    <!-- UI Router -->
+    <script src="node_modules/angular-ui-router/release/angular-ui-router.min.js "></script>
+    <!-- ngSanitize -->
+    <script src="node_modules/angular-sanitize/angular-sanitize.min.js "></script>
+    <!-- Firebase -->
+    <script src="node_modules/firebase/firebase.js "></script>
+    <!-- AngularFire -->
+    <script src="node_modules/angularfire/dist/angularfire.min.js "></script>
+    <!-- Angular Elastic -->
+    <script src="node_modules/angular-elastic/elastic.js "></script>
+    <!-- Angular Media Queries -->
+    <script src="node_modules/angular-media-queries/match-media.js "></script>
+    <!-- ngAnimate -->
+    <script src="node_modules/angular-animate/angular-animate.min.js "></script>
+    <!-- D3 -->
+    <script src="https://d3js.org/d3.v3.min.js " charset="utf-8 "></script>
+    <!-- Angular Datepicker -->
+    <script src="node_modules/angularjs-datepicker/dist/angular-datepicker.min.js "></script>
+    <!-- ng-tags-input -->
+    <script type="text/javascript " src="https://cdnjs.cloudflare.com/ajax/libs/ng-tags-input/3.1.1/ng-tags-input.min.js "></script>
+    <!-- ck Editor -->
+    <script src="vendor/ckeditor/ckeditor.js "></script>
+    <script src="bower_components/angular-ckeditor/angular-ckeditor.min.js "></script>
+
+    <!-- Main App -->
+    <script src="app/app.module.js "></script>
+    <script src="app/app.config.js "></script>
+    <script src="app/app.routes.js "></script>
+    <script src="app/app.run.js "></script>
+    <!-- Services -->
+    <script src="app/auth/auth.factory.js "></script>
+    <script src="app/blog/blog.factory.js "></script>
+    <!-- Directives -->
+    <script src="app/shared/stop-event.directive.js "></script>
+    <script src="app/shared/background-src.directive.js "></script>
+    <!-- Core Controller -->
+    <script src="app/shared/core.controller.js "></script>
+    <!-- Auth -->
+    <script src="app/auth/auth.controller.js "></script>
+    <!-- Blog -->
+    <script src="app/blog/blog.controller.js "></script>
+    <script src="app/blog/crud.controller.js "></script>
+    <script src="app/blog/display.controller.js "></script>
+    <!-- Lab -->
+    <script src="app/lab/lab.controller.js "></script>
+    <script src="app/lab/goban.controller.js "></script>
+    <script src="app/lab/k-on.controller.js "></script>
+
+</body>
+
+</html>

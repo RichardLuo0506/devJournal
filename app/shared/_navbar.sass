@@ -1,0 +1,141 @@
+.navbar
+	+raleway
+
+	display: flex
+	align-items: center
+	position: fixed
+	width: 100%
+	height: $navbar-height
+	top: 0
+	background-color: white
+	border-bottom: 1px solid $divider
+	color: $text
+	padding: 0 15px
+
+	+media-sm-up
+		padding: 0 19%
+
+
+	.brand
+		font-family: "hirakatana"
+		font-size: 30px
+		font-weight: 300
+		letter-spacing: -5px
+		padding-right: 30px
+
+		.secret-login
+			color: $text
+
+			&:hover
+				cursor: none
+
+.nav-offset
+	flex: 1
+
+.nav-toggle
+	font-size: 36px
+
+	+media-sm-up
+		display: none
+
+
+	i
+		color: $text
+
+.nav-links
+	display: flex
+	margin-right: -15px
+
+.nav-link
+	display: none
+	align-items: center
+	justify-content: center
+	padding: 15px
+	height: $navbar-height
+	border-bottom: 1px solid transparent
+	transition: 200ms $ease-natural
+	font-weight: 600
+	color: $subtext
+
+	&:hover, &.active
+		cursor: pointer
+		border-color: $primary
+
+	&:hover
+		color: $text
+
+	&.active
+		color: $text
+
+	+media-sm-up
+		display: inline-flex
+
+.mobile-nav
+	z-index: 100
+
+	+media-sm-up
+		display: none
+
+
+	.links-container
+		@extend .card-3
+
+		z-index: 102
+		background-color: #232b3a
+		position: fixed
+		top: 0
+		bottom: 0
+		left: 0
+		width: 80px
+
+		&.ng-hide-remove
+			animation: 200ms slideInLeft $ease-natural
+
+		&.ng-hide-add
+			animation: 200ms slideOutLeft $ease-natural
+
+		.mobile-brand
+			height: 60px
+			border-bottom: 1px solid $divider-invert
+
+		.mobile-link
+			width: 80px
+			height: 80px
+			display: inline-flex
+			align-items: center
+			justify-content: center
+			flex-direction: column
+			transition: 200ms $ease-natural
+			font-weight: 700
+			color: #5c6270
+
+			i
+				font-size: 24px
+
+			.label
+				+lato
+
+				text-transform: uppercase
+				font-size: 12px
+				padding-top: 10px
+
+			&:hover, &:active
+				color: $primary
+
+			&.active
+				color: white
+
+	.mobile-overlay
+		position: fixed
+		top: 0
+		right: 0
+		bottom: 0
+		left: 0
+		background-color: rgba(0, 0, 0, 0.3)
+		z-index: 101
+
+		&.ng-hide-remove
+			animation: 200ms fadeIn $ease-natural
+
+		&.ng-hide-add
+			animation: 200ms fadeOut $ease-natural

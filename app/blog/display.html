@@ -1,0 +1,26 @@
+<div class="page-container display-view" ng-cloak>
+    <header class="post-header" background-src="{{vm.post.thumbnail}}">
+        <div class="post-header-title">{{vm.post.title}}</div>
+        <div class="post-header-author">
+            <div class="avatar" background-src="{{vm.getAuthor(vm.post.author).avatar}}"></div>
+            <div class="username">{{vm.getAuthor(vm.post.author).username}}</div>
+            <time class="ctime">{{vm.post.ctime | date:'MMMM dd yyyy'}}</time>
+            <div class="post-edit-btn" ui-sref="blog.edit({id: vm.post.$id})" ng-if="user"><i class="ionicons ion-edit"></i></div>
+        </div>
+    </header>
+    <div class="post-content-container" ng-bind-html="postContent"></div>
+    <div class="post-footer">
+        <div class="article-links">
+            <div class="article-link prev" ng-if="vm.prevPost" ui-sref="blog.display({id: vm.prevPost.$id})">
+                <div class="link-label">PREVIOUS</div>
+                <div class="link-title">{{vm.prevPost.title}}</div>
+                <div class="link-author">By: {{vm.getAuthor(vm.prevPost.author).username}}</div>
+            </div>
+            <div class="article-link next" ng-if="vm.nextPost" ui-sref="blog.display({id: vm.nextPost.$id})">
+                <div class="link-label">NEXT</div>
+                <div class="link-title">{{vm.nextPost.title}}</div>
+                <div class="link-author">By: {{vm.getAuthor(vm.nextPost.author).username}}</div>
+            </div>
+        </div>
+    </div>
+</div>

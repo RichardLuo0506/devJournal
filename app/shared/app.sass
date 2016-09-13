@@ -1,0 +1,85 @@
+@import kurisutiiina/kurisutiiina
+
+// App specific
+@font-face
+	font-family: "hirakatana"
+	src: url("../assets/fonts/Hirakatana.otf"), url("../assets/fonts/Hirakatana.ttf")
+
+$navbar-height: 60px
+$primary: $md-red
+$primary-sub: $md-deep-orange
+
+.progressive-padding
+	padding-left: 15px
+	padding-right: 15px
+
+	+media-sm-up
+		padding-left: 19%
+		padding-right: 19%
+
+// Partials
+@import navbar
+@import ../auth/login
+@import ../blog/blog
+@import ../blog/display
+@import ../lab/lab
+@import ../lab/goban
+@import ../about/about
+@import overrides
+
+// Index
+body
+	padding-top: $navbar-height
+	overflow-y: scroll
+	overflow-x: hidden
+
+.navbar
+	z-index: 100
+
+.page-container
+	width: 100%
+	min-height: calc(100vh - #{$navbar-height})
+	overflow-y: hidden
+	background-color: $bg
+	z-index: 50
+
+.view-curtain
+	@extend .flex-xy
+
+	position: fixed
+	top: 0
+	right: 0
+	bottom: 0
+	left: 0
+	background-color: white
+	z-index: 99
+
+	&.ng-hide-add
+		animation: 300ms fadeOut
+
+		+prefix((animation-timing-function: $ease-enter))
+
+.not-found-view
+	position: fixed
+	top: 0
+	right: 0
+	bottom: 0
+	left: 0
+	display: flex
+	flex-direction: column
+	justify-content: center
+	align-items: center
+	background: #8BD3E6
+	z-index: 101
+
+	img.togame
+		height: 38%
+
+	.back-btn
+		+openSans
+
+		+fg-btn((background-color: #c3d2f2, color: $text))
+
+		margin-top: 20px
+		padding: 10px 15px
+		font-size: 20px

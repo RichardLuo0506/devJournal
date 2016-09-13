@@ -1,0 +1,43 @@
+<div class="page-container blog-view" ng-cloak>
+    <!-- <div class="fg-row wrap dashboard">
+        <div class="dash-left">
+            <div class="feature-container" background-src="http://i.imgur.com/SshYuSl.png"></div>
+        </div>
+        <div class="dash-right">
+            <div class="fg-row wrap">
+                <div class="feature-container" background-src="http://i.imgur.com/SshYuSl.png"></div>
+                <div class="feature-container" background-src="http://i.imgur.com/SshYuSl.png"></div>
+                <div class="feature-container" background-src="http://i.imgur.com/SshYuSl.png"></div>
+                <div class="feature-container" background-src="http://i.imgur.com/SshYuSl.png"></div>
+                <div class="feature-container" background-src="http://i.imgur.com/SshYuSl.png"></div>
+                <div class="feature-container" background-src="http://i.imgur.com/SshYuSl.png"></div>
+
+            </div>
+        </div>
+    </div> -->
+    <section class="posts">
+        <div class="blog-ctrl" ng-if="user">
+            <a class="create-post-btn" ui-sref="blog.create"><i class="ionicons ion-compose"></i>Create Post</a>
+        </div>
+        <article class="post" ng-repeat="post in vm.posts" ui-sref="blog.display({id: post.$id})">
+            <div class="title">
+                <i class="{{vm.getPostTypeIcon(post.type)}}"></i>{{post.title}}
+            </div>
+            <div class="thumbnail-container" background-src="{{post.thumbnail}}" ng-if="!!post.thumbnail"></div>
+            <div class="details">
+                <p class="post-description" ng-if="!!post.description">{{post.description}}</p>
+            </div>
+            <div class="author">
+                <div class="avatar" background-src="{{vm.getAuthor(post.author).avatar}}"></div>
+                <div class="user-container">
+                    <div class="username">{{vm.getAuthor(post.author).username}}</div>
+                    <time class="ctime">{{post.ctime | date:'MMMM dd yyyy'}}</time>
+                </div>
+                <!-- <div class="post-edit-btn" ui-sref="blog.edit({id: post.$id})" ng-if="user"><i class="ionicons ion-edit"></i></div> -->
+            </div>
+            <div class="post-tags" ng-if="!!post.tags.length">
+                <span class="tag" ng-repeat="tag in post.tags track by $index">{{tag}}</span>
+            </div>
+        </article>
+    </section>
+</div>

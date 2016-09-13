@@ -1,0 +1,179 @@
+.post-header
+	@extend .progressive-padding
+
+	@extend .flex-xy
+
+	height: calc(100vh - 60px)
+	background-position: center center
+	position: relative
+	flex-direction: column
+
+	&:before
+		content: ""
+		display: block
+		position: absolute
+		top: 0
+		right: 0
+		bottom: 0
+		left: 0
+		background-image: -webkit-linear-gradient(top left, rgba(96, 108, 136, 0.6) 0%, rgba(63, 76, 107, 0.6) 100%)
+		background-image: -o-linear-gradient(top left, rgba(96, 108, 136, 0.6) 0%, rgba(63, 76, 107, 0.6) 100%)
+		background-image: linear-gradient(to bottom right, rgba(96, 108, 136, 0.6) 0%, rgba(63, 76, 107, 0.6) 100%)
+		z-index: 60
+
+.post-header-title
+	+lato
+
+	font-size: 32px
+	font-weight: 600
+	text-align: center
+	letter-spacing: 1px
+	line-height: 1.4
+	color: white
+	z-index: 61
+	text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3)
+	padding-bottom: 20px
+
+	+media-sm-up
+		font-size: 48px
+
+.post-header-author
+	+lato
+
+	@extend .flex-xy
+
+	z-index: 61
+	font-size: 20px
+	color: white
+	font-weight: 300
+	padding-bottom: 30px
+	flex-wrap: wrap
+
+	.avatar
+		border-radius: 25%
+		width: 36px
+		height: 36px
+		background-size: cover
+		background-position-x: center
+		background-position-y: center
+		background-repeat-x: no-repeat
+		background-repeat-y: no-repeat
+
+	.username
+		padding: 0 10px
+		text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3)
+
+	.ctime
+		font-size: 16px
+		text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3)
+
+.post-edit-btn
+	color: white
+	padding: 10px
+	transition: 200ms $ease-natural
+
+	&:hover
+		cursor: pointer
+		color: $md-deep-orange
+
+.post-content-container
+	@extend .progressive-padding
+
+	+lato
+
+	font-size: 16px
+	line-height: $phi
+	letter-spacing: 1px
+	color: $text
+	padding-top: 60px
+	padding-bottom: 30px
+
+	// font-weight: 300
+
+	+media-sm-up
+		font-size: 20px
+
+
+	h1, h2, h3, h4, h5, h6
+		+raleway
+
+		color: $text
+		font-weight: 700
+		margin: 16px 0 10px 0
+
+	p
+		+serif
+
+		margin: 8px 0 25px 0
+		font-size: 18px
+
+		+media-sm-up
+			margin: 10px 0 32px 0
+
+	img
+		width: 100%
+
+.post-footer
+	@extend .progressive-padding
+
+.article-links
+	border-top: 1px solid $primary
+	min-height: 100px
+	padding: 30px 0
+	display: flex
+	flex-wrap: wrap
+
+.article-link
+	margin: 15px 0
+	padding: 15px
+	border: 1px solid $divider
+	border-radius: 2px
+	display: inline-block
+	width: 100%
+	transition: 200ms $ease-natural
+
+	&:hover
+		background-color: $primary
+		color: white
+		cursor: pointer
+
+		.link-title
+			color: white
+
+	+media-sm-up
+		flex: 1
+
+
+	&.prev
+		+media-sm-up
+			border-right: none
+			border-top-right-radius: 0
+			border-bottom-right-radius: 0
+
+	&.next
+		text-align: right
+
+		+media-sm-up
+			border-left: none
+			border-top-left-radius: 0
+			border-bottom-left-radius: 0
+
+	.link-label
+		+lato
+
+		font-size: 12px
+
+	.link-title
+		+lato
+
+		font-size: 22px
+		transition: 200ms $ease-natural
+		margin: 5px 0 8px 0
+		font-weight: 300
+		color: $primary
+
+	.link-author
+		+lato
+
+		font-size: 14px
+		color: $subtext

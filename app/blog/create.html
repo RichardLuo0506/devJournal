@@ -1,0 +1,24 @@
+<div class="page-container create-view" ng-cloak>
+    <div class="crud-form" ng-form="vm.modalForm">
+        <select class="crud-type crud-input" ng-model="vm.crud.type" ng-change="" ng-options="type.name as type.name for type in vm.postTypes" required>
+            <option class="placeholder" value="" disabled selected>- Select type -</option>
+        </select>
+        <input type="text" class="crud-title crud-input" ng-model="vm.crud.title" placeholder="Title" required>
+        <datepicker date-format="EEEE MMM d, y" datepicker-class="adcalendar">
+            <input class="crud-input crud-date" ng-model="vm.crud.ctime" type="text" placeholder="Date" />
+        </datepicker>
+        <input type="text" class="crud-image crud-input" ng-model="vm.crud.thumbnail" placeholder="Thumbnail url">
+        <input type="text" class="crud-github crud-input" ng-model="vm.crud.github" placeholder="Github url">
+        <textarea class="crud-description crud-input" ng-model="vm.crud.description" placeholder="Description" rows="4" msd-elastic></textarea>
+        <div class="editor-wrapper">
+            <div ng-model="vm.crud.content" placeholder="Description" rows="8" ckeditor="editorOptions"></div>
+        </div>
+        <tags-input class="crud-tags" ng-model="vm.inputTags" on-tag-adding="vm.onTagAdding($tag)" on-tag-added="vm.onTagAdded($tag)">
+            <auto-complete source="vm.getTags($query)" maxResultsToShow="3"></auto-complete>
+        </tags-input>
+        <div class="crud-btn-wrapper ">
+            <div class="crud-cancel-btn " ng-click="core.goPrevState() ">Cancel</div>
+            <div class="crud-submit-btn " ng-disabled="vm.modalForm.$invalid " ng-click="vm.createPost() ">Post</div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,333 @@
+$goban: #ecb65c
+
+@keyframes handOfGod
+	from
+		transform: scale(1)
+		opacity: 1
+
+	to
+		transform: scale(40)
+		opacity: 0
+
+.page-container.goban-view
+	background-color: black
+	height: 100%
+	position: relative
+
+.room-of-deep-contemplation
+	@extend .flex-xy
+
+	flex-direction: column
+	width: 100%
+	height: 100%
+	padding: 10px
+	overflow: hidden
+	position: relative
+
+	+media-sm-up
+		flex-direction: row
+
+.chart-container
+	position: absolute
+	top: 0
+	right: 0
+	bottom: 0
+	left: 0
+	z-index: 20
+
+	canvas
+		z-index: 21
+
+.nametag
+	@extend .flex-xy
+
+	color: white
+	font-size: 20px
+	padding: 20px 0
+	z-index: 20
+
+	+media-sm-up
+		flex: 0 0 31%
+
+
+	.name
+		padding: 0 10px
+
+		&.lsd
+			position: relative
+			top: 2px
+
+	.stone-label
+		@extend .aspect-square
+
+		display: inline-block
+		width: 32%
+		border-radius: 50%
+		position: relative
+		overflow: hidden
+		box-shadow: 0 0 10vw black
+		transition: 500ms $ease-natural
+		z-index: 21
+
+		&:before
+			content: ""
+			width: 100%
+			height: 100%
+			display: block
+			position: absolute
+
+		&.black
+			background-color: black
+
+			&:before
+				opacity: 0.7
+				background: radial-gradient(ellipse closest-corner at 30% 30%, #cecece, #929090 10%, #616060 30%, #424242 80%, #313131 100%)
+
+		&.white
+			background-color: white
+			color: $text
+			font-size: 150%
+
+			&:before
+				opacity: 0.2
+				background: radial-gradient(ellipse closest-corner at 30% 30%, #cecece, #929090 10%, #616060 30%, #424242 80%, #313131 100%)
+
+	img
+		height: 30px
+
+canvas.content
+	border-radius: 50%
+	z-index: 60
+
+.goban
+	@extend .aspect-square
+
+	width: 100%
+	overflow: hidden
+
+	+media-sm-up
+		flex: 0 0 38%
+
+
+	.base
+		display: flex
+
+		.goban-column
+			flex: 1
+			display: flex
+			flex-direction: column
+
+.goban-cell
+	position: relative
+	flex: 1
+
+	.cell-pattern
+		float: left
+		width: 50%
+		height: 50%
+		display: inline-block
+		background-color: transparent
+		position: relative
+		z-index: 50
+
+		.inner-pattern
+			position: absolute
+			background-color: $goban
+			z-index: 51
+
+		&:nth-child(1) .inner-pattern
+			top: 0
+			right: 1px
+			bottom: 1px
+			left: 0
+
+		&:nth-child(2) .inner-pattern
+			top: 0
+			right: 0
+			bottom: 1px
+			left: 1px
+
+		&:nth-child(3) .inner-pattern
+			top: 1px
+			right: 1px
+			bottom: 0
+			left: 0
+
+		&:nth-child(4) .inner-pattern
+			top: 1px
+			right: 0
+			bottom: 0
+			left: 1px
+
+	.hoshi
+		@extend .flex-xy
+
+		position: absolute
+		top: 0
+		right: 0
+		bottom: 0
+		left: 0
+		z-index: 51
+
+		&:before
+			content: ""
+			display: block
+			width: 6px
+			height: 6px
+			border-radius: 50%
+			background-color: black
+
+	.ishi-wrapper
+		@extend .flex-xy
+
+		position: absolute
+		top: 0
+		right: 0
+		bottom: 0
+		left: 0
+		z-index: 70
+
+		.ishi
+			display: inline-block
+			width: 90%
+			height: 90%
+			border-radius: 50%
+			position: relative
+			overflow: hidden
+			box-shadow: 1px 1px 3px -1px rgba(0, 0, 0, 0.3), 2px 2px 1px 0px rgba(0, 0, 0, 0.5)
+			transition: 500ms $ease-natural
+
+			&:before
+				content: ""
+				width: 100%
+				height: 100%
+				display: block
+				position: absolute
+
+			&.black
+				background-color: black
+
+				&:before
+					opacity: 0.7
+					background: radial-gradient(ellipse closest-corner at 30% 30%, #cecece, #929090 10%, #616060 30%, #424242 80%, #313131 100%)
+
+			&.white
+				background-color: white
+
+				&:before
+					opacity: 0.2
+					background: radial-gradient(ellipse closest-corner at 30% 30%, #cecece, #929090 10%, #616060 30%, #424242 80%, #313131 100%)
+
+// fix sides
+.goban-cell[row="19"]
+	.cell-pattern:nth-child(1), .cell-pattern:nth-child(2)
+		.inner-pattern
+			left: 0
+			right: 0
+
+.goban-cell[row="1"]
+	.cell-pattern:nth-child(3), .cell-pattern:nth-child(4)
+		.inner-pattern
+			left: 0
+			right: 0
+
+.goban-cell[column="A"]
+	.cell-pattern:nth-child(1), .cell-pattern:nth-child(3)
+		.inner-pattern
+			top: 0
+			bottom: 0
+
+.goban-cell[column="T"]
+	.cell-pattern:nth-child(2), .cell-pattern:nth-child(4)
+		.inner-pattern
+			top: 0
+			bottom: 0
+
+// fix corners
+.goban-cell[coordinates="A19"]
+	.cell-pattern:nth-child(1)
+		.inner-pattern
+			top: 0
+			right: 1px
+			bottom: 1px
+			left: 0
+
+	.cell-pattern:nth-child(2)
+		.inner-pattern
+			top: 0
+			right: 0
+			bottom: 1px
+			left: -1px
+
+	.cell-pattern:nth-child(3)
+		.inner-pattern
+			top: -1px
+			right: 1px
+			bottom: 0
+			left: 0
+
+.goban-cell[coordinates="T19"]
+	.cell-pattern:nth-child(1)
+		.inner-pattern
+			top: 0
+			right: -1px
+			bottom: 1px
+			left: 0
+
+	.cell-pattern:nth-child(2)
+		.inner-pattern
+			top: 0
+			right: 0
+			bottom: 1px
+			left: 1px
+
+	.cell-pattern:nth-child(4)
+		.inner-pattern
+			top: -1px
+			right: 0
+			bottom: 0
+			left: 1px
+
+.goban-cell[coordinates="A1"]
+	.cell-pattern:nth-child(1)
+		.inner-pattern
+			top: 0
+			right: 1px
+			bottom: -1px
+			left: 0
+
+	.cell-pattern:nth-child(3)
+		.inner-pattern
+			top: 1px
+			right: 1px
+			bottom: 0
+			left: 0
+
+	.cell-pattern:nth-child(4)
+		.inner-pattern
+			top: 1px
+			right: 0
+			bottom: 0
+			left: -1px
+
+.goban-cell[coordinates="T1"]
+	.cell-pattern:nth-child(2)
+		.inner-pattern
+			top: 0
+			right: 0
+			bottom: -1px
+			left: 1px
+
+	.cell-pattern:nth-child(3)
+		.inner-pattern
+			top: 1px
+			right: -1px
+			bottom: 0
+			left: 0
+
+	.cell-pattern:nth-child(4)
+		.inner-pattern
+			top: 1px
+			right: 0
+			bottom: 0
+			left: 1px
