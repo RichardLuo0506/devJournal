@@ -7,6 +7,10 @@
             <time class="ctime">{{vm.post.ctime | date:'MMMM dd yyyy'}}</time>
             <div class="post-edit-btn" ui-sref="blog.edit({id: vm.post.$id})" ng-if="user"><i class="ionicons ion-edit"></i></div>
         </div>
+        <div class="scroll-btn">
+            <div>scroll</div>
+            <div><i class="material-icons">mouse</i></div>
+        </div>
     </header>
     <div class="post-content-container" ng-bind-html="postContent"></div>
     <div class="post-footer">

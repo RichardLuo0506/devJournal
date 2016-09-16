@@ -48,6 +48,7 @@
 	font-weight: 300
 	padding-bottom: 30px
 	flex-wrap: wrap
+	text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3)
 
 	.avatar
 		border-radius: 25%
@@ -75,6 +76,18 @@
 	&:hover
 		cursor: pointer
 		color: $md-deep-orange
+
+.scroll-btn
+	+lato
+
+	text-align: center
+	color: white
+	animation: attention 2s infinite
+	z-index: 61
+
+	i
+		font-size: 30px
+		padding-top: 5px
 
 .post-content-container
 	@extend .progressive-padding

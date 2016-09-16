@@ -3,6 +3,15 @@
 
 	color: $text
 
+	em
+		font-weight: bold
+
+	a
+		color: $md-blue-700
+
+		&:hover
+			text-decoration: underline
+
 header.me
 	@extend .flex-xy
 
@@ -75,24 +84,48 @@ article.section:not(:first-child)
 		padding: 0 19%
 
 .section-subheading
-	padding: 0 15px
+	padding: 0 15px 5px 15px
 	color: #3a434a
 	font-weight: 700
 	margin: 0
 
 	+media-sm-up
-		padding: 0 19%
+		padding: 0 19% 5px 19%
 
 .section-text
 	+serif
 
 	font-size: 18px
-	padding: 10px 15px 30px 15px
+	padding: 0 15px 30px 15px
 	line-height: 1.4
 
 	+media-sm-up
-		padding: 10px 19% 20px 19%
+		padding: 0 19% 30px 19%
 
 
 	span
 		color: #f1ba28
+		font-weight: 600
+
+.section-list
+	padding: 10px 15px 5px 15px
+	line-height: 1.4
+	font-size: 16px
+
+	+media-sm-up
+		padding: 10px 19% 5px 19%
+
+
+	.name
+		+raleway
+
+		color: #3a434a
+		display: inline-block
+		border-bottom: 1px solid #f1ba28
+		margin-bottom: 5px
+
+	.details
+		+serif
+
+		+media-sm-up
+			padding-left: 15px

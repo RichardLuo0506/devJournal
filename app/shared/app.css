@@ -262,10 +262,17 @@ h6 {
   35% {
     -webkit-transform: scale3D(0, 0, 1);
     transform: scale3D(0, 0, 1); } }
-.card-1, .lab-item .content {
+@keyframes attention {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0); }
+  40% {
+    transform: translateY(-8px); }
+  60% {
+    transform: translateY(-4px); } }
+.card-1 {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
 
-.card-2, .fg-modal, .lab-item .content:hover, ._720kb-datepicker-calendar {
+.card-2, .fg-modal, ._720kb-datepicker-calendar {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }
 
 .card-3, .mobile-nav .links-container {
@@ -277,7 +284,7 @@ h6 {
 .card-5 {
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22); }
 
-.flex-xy, .loader, .fg-backdrop, .page-container.login-view, .blog-ctrl, .post-header, .post-header-author, .lab-item .content, .room-of-deep-contemplation, .nametag, .goban-cell .hoshi, .goban-cell .ishi-wrapper, header.me, .view-curtain {
+.flex-xy, .loader, .fg-backdrop, .page-container.login-view, .blog-ctrl, .post-header, .post-header-author, .lab-thumbnail, .room-of-deep-contemplation, .nametag, .goban-cell .hoshi, .goban-cell .ishi-wrapper, header.me, .view-curtain {
   display: flex;
   justify-content: center;
   align-items: center; }
@@ -673,6 +680,27 @@ h6 {
   .blog-ctrl .create-post-btn i {
     padding-right: 10px; }
 
+.posts-heading {
+  font-family: "Raleway", sans-serif;
+  font-size: 26px;
+  color: #3a434a;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-align: center;
+  border-bottom: 3px solid #f1ba28;
+  margin: 0 auto 20px auto;
+  display: inline-block;
+  padding: 0 8px 5px 8px; }
+  @media screen and (min-width: 768px) {
+    .posts-heading {
+      font-size: 32px;
+      margin-bottom: 60px; } }
+  .posts-heading span {
+    font-size: 36px; }
+    @media screen and (min-width: 768px) {
+      .posts-heading span {
+        font-size: 42px; } }
+
 .post {
   font-family: "Open Sans", sans-serif;
   padding-top: 30px;
@@ -680,8 +708,15 @@ h6 {
   border-bottom: 1px solid rgba(0, 0, 0, 0.12); }
   @media screen and (min-width: 768px) {
     .post {
-      padding-top: 60px;
-      padding-bottom: 60px; } }
+      padding: 20px;
+      background-color: white;
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      border-radius: 2px;
+      margin-bottom: 30px;
+      transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1), border-color 300ms cubic-bezier(0.4, 0, 0.2, 1); }
+      .post:hover {
+        border-color: transparent;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); } }
   .post:hover {
     cursor: pointer; }
     .post:hover .title {
@@ -914,7 +949,8 @@ h6 {
   color: white;
   font-weight: 300;
   padding-bottom: 30px;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); }
   .post-header-author .avatar {
     border-radius: 25%;
     width: 36px;
@@ -938,6 +974,16 @@ h6 {
   .post-edit-btn:hover {
     cursor: pointer;
     color: #FF5722; }
+
+.scroll-btn {
+  font-family: "Lato", sans-serif;
+  text-align: center;
+  color: white;
+  animation: attention 2s infinite;
+  z-index: 61; }
+  .scroll-btn i {
+    font-size: 30px;
+    padding-top: 5px; }
 
 .post-content-container {
   font-family: "Lato", sans-serif;
@@ -1019,39 +1065,94 @@ h6 {
 .page-container.lab-view {
   font-family: "Lato", sans-serif; }
 
-.lab-row {
+.labs-container {
   padding: 15px; }
   @media screen and (min-width: 768px) {
-    .lab-row {
-      display: flex;
-      flex-wrap: wrap;
+    .labs-container {
       padding: 30px 19%; } }
 
-.lab-item .content {
-  top: 10px;
-  right: 10px;
-  bottom: 10px;
-  left: 10px; }
-  .lab-item .content:hover {
-    transition: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+.labs-heading {
+  font-family: "Raleway", sans-serif;
+  font-size: 26px;
+  color: #3a434a;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-align: center;
+  border-bottom: 3px solid #f1ba28;
+  margin: 20px auto 40px auto;
+  display: inline-block;
+  padding: 0 8px 5px 8px; }
+  @media screen and (min-width: 768px) {
+    .labs-heading {
+      font-size: 32px;
+      margin-bottom: 60px; } }
+  .labs-heading span {
+    font-size: 36px; }
+    @media screen and (min-width: 768px) {
+      .labs-heading span {
+        font-size: 42px; } }
+
+.lab-item {
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 30px;
+  margin-bottom: 30px; }
+  .lab-item:not(:last-child) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12); }
+  .lab-item:hover {
     cursor: pointer; }
-@media screen and (max-width: 767px) {
-  .lab-item:not(:first-child) {
-    margin-top: 15px; } }
-@media screen and (min-width: 768px) {
-  .lab-item {
-    width: 100%; } }
-@media screen and (min-width: 992px) {
-  .lab-item {
-    width: 50%; } }
-@media screen and (min-width: 1200px) {
-  .lab-item {
-    width: 33.33333%; } }
-.lab-item .broken {
-  color: white;
-  opacity: 0.7;
-  position: absolute;
-  font-size: 60px; }
+    .lab-item:hover .lab-thumbnail {
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }
+    .lab-item:hover .lab-details .heading {
+      color: #F44336; }
+  @media screen and (min-width: 768px) {
+    .lab-item {
+      align-items: center; } }
+
+.lab-thumbnail {
+  flex: 0 0 100%;
+  height: 200px;
+  background-position: center;
+  background-position-x: center;
+  background-position-y: center;
+  transition: 300ms cubic-bezier(0.4, 0, 0.2, 1); }
+  @media screen and (min-width: 768px) and (max-width: 991px) {
+    .lab-thumbnail {
+      flex: 0 0 200px;
+      height: 120px; } }
+  @media screen and (min-width: 992px) {
+    .lab-thumbnail {
+      flex: 0 0 250px;
+      height: 150px; } }
+  @media screen and (min-width: 1600px) {
+    .lab-thumbnail {
+      flex: 0 0 300px;
+      height: 180px; } }
+  .lab-thumbnail .broken {
+    color: white;
+    opacity: 0.7;
+    position: absolute;
+    font-size: 52px; }
+
+.lab-details {
+  flex: 1;
+  padding-top: 15px; }
+  @media screen and (min-width: 768px) {
+    .lab-details {
+      padding-top: 0;
+      padding-left: 30px; } }
+  .lab-details .heading {
+    font-family: "Raleway", sans-serif;
+    font-size: 20px;
+    letter-spacing: 1px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    transition: 300ms cubic-bezier(0.4, 0, 0.2, 1); }
+  .lab-details .description {
+    font-family: "Cormorant Garamond", serif;
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 16px;
+    line-height: 1.4; }
 
 @keyframes handOfGod {
   from {
@@ -1311,6 +1412,12 @@ canvas.content {
 .about-view {
   font-family: "Raleway", sans-serif;
   color: rgba(0, 0, 0, 0.8); }
+  .about-view em {
+    font-weight: bold; }
+  .about-view a {
+    color: #1976D2; }
+    .about-view a:hover {
+      text-decoration: underline; }
 
 header.me {
   flex-direction: column;
@@ -1376,24 +1483,44 @@ article.section:not(:first-child) {
       padding: 0 19%; } }
 
 .section-subheading {
-  padding: 0 15px;
+  padding: 0 15px 5px 15px;
   color: #3a434a;
   font-weight: 700;
   margin: 0; }
   @media screen and (min-width: 768px) {
     .section-subheading {
-      padding: 0 19%; } }
+      padding: 0 19% 5px 19%; } }
 
 .section-text {
   font-family: "Cormorant Garamond", serif;
   font-size: 18px;
-  padding: 10px 15px 30px 15px;
+  padding: 0 15px 30px 15px;
   line-height: 1.4; }
   @media screen and (min-width: 768px) {
     .section-text {
-      padding: 10px 19% 20px 19%; } }
+      padding: 0 19% 30px 19%; } }
   .section-text span {
-    color: #f1ba28; }
+    color: #f1ba28;
+    font-weight: 600; }
+
+.section-list {
+  padding: 10px 15px 5px 15px;
+  line-height: 1.4;
+  font-size: 16px; }
+  @media screen and (min-width: 768px) {
+    .section-list {
+      padding: 10px 19% 5px 19%; } }
+  .section-list .name {
+    font-family: "Raleway", sans-serif;
+    color: #3a434a;
+    display: inline-block;
+    border-bottom: 1px solid #f1ba28;
+    margin-bottom: 5px; }
+  .section-list .details {
+    font-family: "Cormorant Garamond", serif; }
+    @media screen and (min-width: 768px) {
+      .section-list .details {
+        padding-left: 15px; } }
 
 ._720kb-datepicker-calendar {
   margin: 10px 0 0 0;

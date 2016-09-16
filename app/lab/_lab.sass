@@ -1,50 +1,113 @@
 .page-container.lab-view
 	+lato
 
-.lab-row
+.labs-container
 	padding: 15px
 
 	+media-sm-up
-		display: flex
-		flex-wrap: wrap
 		padding: 30px 19%
 
-.lab-item
-	.content
-		@extend .card-1
+.labs-heading
+	+raleway
 
-		@extend .flex-xy
-
-		top: 10px
-		right: 10px
-		bottom: 10px
-		left: 10px
-
-		&:hover
-			@extend .card-2
-
-			transition: 200ms $ease-natural
-			cursor: pointer
-
-	+media-xs
-		&:not(:first-child)
-			margin-top: 15px
-
+	font-size: 26px
+	color: #3a434a
+	font-weight: 700
+	letter-spacing: 2px
+	text-align: center
+	border-bottom: 3px solid #f1ba28
+	margin: 20px auto 40px auto
+	display: inline-block
+	padding: 0 8px 5px 8px
 
 	+media-sm-up
-		width: 100%
+		font-size: 32px
+		margin-bottom: 60px
+
+
+	span
+		font-size: 36px
+
+		+media-sm-up
+			font-size: 42px
+
+.lab-item
+	display: flex
+	flex-wrap: wrap
+	padding-bottom: 30px
+	margin-bottom: 30px
+
+	&:not(:last-child)
+		border-bottom: 1px solid $divider
+
+	&:hover
+		cursor: pointer
+
+		.lab-thumbnail
+			box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)
+
+		.lab-details .heading
+			color: $primary
+
+	+media-sm-up
+		align-items: center
+
+.lab-thumbnail
+	@extend .flex-xy
+
+	flex: 0 0 100%
+	height: 200px
+	background-position: center
+	background-position-x: center
+	background-position-y: center
+	transition: 300ms $ease-natural
+
+	// +media-xs
+	// 	&:not(:first-child)
+	// 		margin-top: 15px
+
+	+media-sm
+		flex: 0 0 200px
+		height: 120px
 
 
 	+media-md-up
-		width: 50%
+		flex: 0 0 250px
+		height: 150px
 
 
-	+media-lg-up
-		width: 33.33333%
+	+media-xl
+		flex: 0 0 300px
+		height: 180px
 
 
 	.broken
 		color: white
 		opacity: 0.7
 		position: absolute
-		font-size: 60px
+		font-size: 52px
+
+.lab-details
+	flex: 1
+	padding-top: 15px
+
+	+media-sm-up
+		padding-top: 0
+		padding-left: 30px
+
+
+	.heading
+		+raleway
+
+		font-size: 20px
+		letter-spacing: 1px
+		font-weight: 500
+		margin-bottom: 10px
+		transition: 300ms $ease-natural
+
+	.description
+		+serif
+
+		color: $text
+		font-size: 16px
+		line-height: 1.4
